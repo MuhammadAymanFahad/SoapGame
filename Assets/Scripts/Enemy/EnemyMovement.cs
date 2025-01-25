@@ -4,15 +4,57 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float speed;
+    public Rigidbody2D enemyRigidBody;
+    public Transform playerTransform;
+    public int facingDirection = -1;
+    public bool isChasing;
+
+    private void Start()
     {
-        
+        enemyRigidBody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if(isChasing)
+        {
+            if (isChasing)
+            {
+                if(playerTransform.position.x > transform.position.x && facingDirection == -1 || playerTransform.position.x < transform.position.x && facingDirection == 1)
+                {
+                    flip();
+                }
+            }
+            Vector2 direction = (playerTransform.position - transform.position).normalized;
+            enemyRigidBody.velocity = direction * speed;
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            if(playerTransform == null)
+            {
+                playerTransform = other.transform;
+            }
+            isChasing = true;
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            enemyRigidBody.velocity = Vector2.zero;
+            isChasing = false;
+        }
+    }
+
+    public void flip()
+    {
+        facingDirection *= -1;
+        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
 }
