@@ -7,15 +7,17 @@ public class EnemyMovement : MonoBehaviour
     public float speed;
     public Rigidbody2D enemyRigidBody;
     public Transform playerTransform;
+    public Animator enemyAnim;
     public int facingDirection = -1;
     public bool isChasing;
 
-    private void Start()
+    public virtual void Start()
     {
         enemyRigidBody = GetComponent<Rigidbody2D>();
+        enemyAnim = GetComponent<Animator>();
     }
 
-    private void Update()
+    public void Update()
     {
         if(isChasing)
         {
@@ -31,7 +33,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+    public virtual void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.tag == "Player")
         {
@@ -43,7 +45,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    public void OnTriggerExit2D(Collider2D other)
+    public virtual void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
