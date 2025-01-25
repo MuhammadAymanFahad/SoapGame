@@ -5,14 +5,14 @@ using UnityEngine;
 public class Enemy1Movement : MonoBehaviour
 {
     public float speed;
-    public float attackRange = 1;
+    public float attackRange = 2;
     public float attackCooldown;
     public float attackCooldownTimer;
     public float playerDetectRange = 5;
     public Transform detectionPoint;
     public LayerMask playerLayer;
 
-    public Rigidbody2D enemyRigidBody;
+    public Rigidbody2D rb;
     public Transform playerTransform;
     public Animator enemyAnim;
     public int facingDirection = -1;
@@ -20,9 +20,42 @@ public class Enemy1Movement : MonoBehaviour
 
     public void Start()
     {
-        enemyRigidBody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         enemyAnim = GetComponent<Animator>();
         changeState(EnemyState.Idle);
+    }
+
+    public void Update()
+    {
+        checkForPlayer();
+        if (attackCooldownTimer > 0)
+        {
+            attackCooldownTimer -= Time.deltaTime;
+        }
+        if (enemyState == EnemyState.Chasing)
+        {
+            chase();
+        }
+        else if (enemyState == EnemyState.Attacking)
+        {
+            rb.velocity = Vector2.zero;
+        }
+    }
+
+    public void chase()
+    {
+        if (Vector2.Distance(playerTransform.position, playerTransform.position) <= attackRange && attackCooldownTimer <= 0)
+        {
+            attackCooldownTimer = attackCooldown;
+            changeState(EnemyState.Attacking);
+        }
+
+        else if (playerTransform.position.x > transform.position.x && facingDirection == -1 || playerTransform.position.x < transform.position.x && facingDirection == 1)
+        {
+            flip();
+        }
+        Vector2 direction = (playerTransform.position - transform.position).normalized;
+        rb.velocity = direction * speed;
     }
 
     void changeState(EnemyState newState)
@@ -46,38 +79,7 @@ public class Enemy1Movement : MonoBehaviour
             enemyAnim.SetBool("isAttacking", true);
     }
 
-    public void Update()
-    {
-        checkForPlayer();
-        if(attackCooldownTimer > 0) 
-        {
-            attackCooldownTimer -= Time.deltaTime;
-        }
-        if (enemyState == EnemyState.Chasing)
-        {
-            chase();
-        }
-        else if(enemyState == EnemyState.Attacking)
-        {
-            enemyRigidBody.velocity = Vector2.zero;
-        }
-    }
 
-    public void chase()
-    {
-        if(Vector2.Distance(transform.position, playerTransform.transform.position) <= attackRange && attackCooldownTimer <= 0)
-        {
-            attackCooldownTimer = attackCooldown;
-            changeState(EnemyState.Attacking);
-        }
-
-        if (playerTransform.position.x > transform.position.x && facingDirection == -1 || playerTransform.position.x < transform.position.x && facingDirection == 1)
-        {
-            flip();
-        }
-        Vector2 direction = (playerTransform.position - transform.position).normalized;
-        enemyRigidBody.velocity = direction * speed;
-    }
     public void flip()
     {
         facingDirection *= -1;
@@ -95,15 +97,15 @@ public class Enemy1Movement : MonoBehaviour
                 attackCooldownTimer = attackCooldown;
                 changeState(EnemyState.Attacking);
             }
-            else if(Vector2.Distance(transform.position, playerTransform.position) > attackRange) 
+            else if(Vector2.Distance(transform.position, playerTransform.position) > attackRange && enemyState != EnemyState.Attacking) 
             {
                 changeState(EnemyState.Chasing);
             }
-            changeState(EnemyState.Chasing);
+            //changeState(EnemyState.Chasing);
         }
         else
         {
-            enemyRigidBody.velocity = Vector2.zero;
+            rb.velocity = Vector2.zero;
             changeState(EnemyState.Idle);
         }
     }

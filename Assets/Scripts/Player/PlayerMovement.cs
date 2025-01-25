@@ -42,10 +42,18 @@ public class PlayerMovement : MonoBehaviour
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
 
-    public void knockBack(Transform enemy)
+    public void knockBack(Transform enemy, float force, float stunTime)
     {
         isKnockedBack = true;
-        Vector2 direction = transform.position - enemy.position;
-        playerRigidBody.velocity = direction;
+        Vector2 direction = (transform.position - enemy.position).normalized;
+        playerRigidBody.velocity = direction * force;
+        StartCoroutine(knockbackCounter(stunTime));
+    }
+
+    IEnumerator knockbackCounter(float stunTime)
+    {
+        yield return new WaitForSeconds(stunTime);
+        playerRigidBody.velocity = Vector2.zero;
+        isKnockedBack = false;
     }
 }

@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private int currentHealth;
-    [SerializeField] private int maxHealth;
+    public int currentHealth;
+    public int maxHealth;
     [SerializeField] private UIManager uiManager;
 
     public void changeHealth(int amount)
     {
         currentHealth += amount;
-        Debug.Log("Current Health = " + currentHealth);
         uiManager.UpdateLives(currentHealth);
 
         if(currentHealth <= 0)
