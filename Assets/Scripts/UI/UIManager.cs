@@ -6,17 +6,17 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private Text scoreText;
+    [SerializeField] private Image livesImage;
     [SerializeField] private Sprite[] liveSprites;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        UpdateLives(6);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateLives(int currentLives)
     {
-        
+        livesImage.sprite = liveSprites[currentLives];
     }
 }
