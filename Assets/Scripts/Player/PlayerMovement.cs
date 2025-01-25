@@ -11,10 +11,21 @@ public class PlayerMovement : MonoBehaviour
     
 
     private int facingDirection = 1;
+    public PlayerCombat playerCombat;
+
+    
 
     void Start()
     {
         transform.position = new Vector3(0, 0, 0);       
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Slash"))
+        {
+            playerCombat.Attack();
+        }
     }
 
     void FixedUpdate()
