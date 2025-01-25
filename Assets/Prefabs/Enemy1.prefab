@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 6528455267424757331}
   - component: {fileID: 2727767072338870816}
   - component: {fileID: 679657696574527583}
-  - component: {fileID: -1945398783726514625}
   - component: {fileID: 39805498797543386}
   - component: {fileID: 966557441061454689}
+  - component: {fileID: 8008729961019357750}
+  - component: {fileID: 2077318207537822667}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Untagged
@@ -151,23 +152,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.02783072, y: -0.009276986}
   m_Size: {x: 0.96385217, y: 1.9462593}
   m_Direction: 0
---- !u!114 &-1945398783726514625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 337671967302554844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e48aebd42f2509e48ad83f0d0d2d3a14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 4
-  enemyRigidBody: {fileID: 0}
-  playerTransform: {fileID: 0}
-  facingDirection: -1
-  isChasing: 0
 --- !u!58 &39805498797543386
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -216,3 +200,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+--- !u!95 &8008729961019357750
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337671967302554844}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6cfb72518c367f64890f8be29e1ff810, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2077318207537822667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337671967302554844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 239e1a18bcc09494fad9cc8601fce7dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  attackRange: 1
+  enemyRigidBody: {fileID: 2727767072338870816}
+  playerTransform: {fileID: 0}
+  enemyAnim: {fileID: 8008729961019357750}
+  facingDirection: -1

@@ -8,7 +8,7 @@ public class EnemyMovement : MonoBehaviour
     public Rigidbody2D enemyRigidBody;
     public Transform playerTransform;
     public Animator enemyAnim;
-    public int facingDirection = -1;
+    public int facingDirection;
     public bool isChasing;
 
     public virtual void Start()

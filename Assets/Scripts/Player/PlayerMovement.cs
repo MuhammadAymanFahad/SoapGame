@@ -44,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void knockBack(Transform enemy)
     {
-
+        isKnockedBack = true;
+        Vector2 direction = transform.position - enemy.position;
+        playerRigidBody.velocity = direction;
     }
 }
