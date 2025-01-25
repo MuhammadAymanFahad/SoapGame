@@ -2,15 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy1Movement : EnemyMovement
+public class Enemy1Movement : MonoBehaviour
 {
+    public float speed;
+    public Rigidbody2D enemyRigidBody;
+    public Transform playerTransform;
+    public Animator enemyAnim;
+    public int facingDirection = -1;
     private EnemyState enemyState;
 
-    public override void Start()
+    public void Start()
     {
-        changeState(EnemyState.Idle);
         enemyRigidBody = GetComponent<Rigidbody2D>();
         enemyAnim = GetComponent<Animator>();
+        changeState(EnemyState.Idle);
     }
 
     void changeState(EnemyState newState)
@@ -24,13 +29,33 @@ public class Enemy1Movement : EnemyMovement
         enemyState = newState;
 
         //enter anim
-        if(enemyState == EnemyState.Idle)
+        if (enemyState == EnemyState.Idle)
             enemyAnim.SetBool("isIdle", true);
         if (enemyState == EnemyState.Chasing)
             enemyAnim.SetBool("isChasing", true);
     }
 
-    public override void OnTriggerEnter2D(Collider2D other)
+    public void Update()
+    {
+        if (enemyState == EnemyState.Chasing)
+        {
+
+            if (playerTransform.position.x > transform.position.x && facingDirection == -1 || playerTransform.position.x < transform.position.x && facingDirection == 1)
+            {
+                flip();
+            }
+            Vector2 direction = (playerTransform.position - transform.position).normalized;
+            enemyRigidBody.velocity = direction * speed;
+        }
+    }
+
+    public void flip()
+    {
+        facingDirection *= -1;
+        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
@@ -38,20 +63,19 @@ public class Enemy1Movement : EnemyMovement
             {
                 playerTransform = other.transform;
             }
-            isChasing = true;
             changeState(EnemyState.Chasing);
         }
     }
 
-    public override void OnTriggerExit2D(Collider2D other)
+    public void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
             enemyRigidBody.velocity = Vector2.zero;
-            isChasing = false;
             changeState(EnemyState.Idle);
         }
     }
+
 }
 
 public enum EnemyState

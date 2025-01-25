@@ -333,6 +333,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &313445849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313445840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 239e1a18bcc09494fad9cc8601fce7dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  enemyRigidBody: {fileID: 313445853}
+  playerTransform: {fileID: 1412407073}
+  enemyAnim: {fileID: 313445848}
+  facingDirection: -1
+--- !u!50 &313445853 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 2727767072338870816, guid: 8b358dadfc282c94ea975d9c1a6d7c80, type: 3}
+  m_PrefabInstance: {fileID: 1536999474}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &613559791
 GameObject:
   m_ObjectHideFlags: 0
@@ -2636,13 +2658,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -1945398783726514625, guid: 8b358dadfc282c94ea975d9c1a6d7c80, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 337671967302554844, guid: 8b358dadfc282c94ea975d9c1a6d7c80, type: 3}
       insertIndex: -1
       addedObject: {fileID: 313445848}
+    - targetCorrespondingSourceObject: {fileID: 337671967302554844, guid: 8b358dadfc282c94ea975d9c1a6d7c80, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 313445849}
   m_SourcePrefab: {fileID: 100100000, guid: 8b358dadfc282c94ea975d9c1a6d7c80, type: 3}
 --- !u!1 &1898049684
 GameObject:
