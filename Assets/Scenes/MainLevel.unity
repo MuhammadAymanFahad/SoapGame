@@ -307,25 +307,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &316884210 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 337671967302554844, guid: 8b358dadfc282c94ea975d9c1a6d7c80, type: 3}
-  m_PrefabInstance: {fileID: 1536999474}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &316884218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 316884210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9306fbb9f43fbee41a2423a90e228e1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 3
-  maxHealth: 3
 --- !u!1 &613559791
 GameObject:
   m_ObjectHideFlags: 0
@@ -2387,6 +2368,7 @@ GameObject:
   - component: {fileID: 1412407077}
   - component: {fileID: 1412407078}
   - component: {fileID: 1412407079}
+  - component: {fileID: 1412407080}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -2596,6 +2578,23 @@ MonoBehaviour:
   weaponRange: 1
   cooldown: 2
   damage: 2
+  knockbackForce: 20
+  knockbackTime: 0.15
+  stunTime: 0.15
+--- !u!114 &1412407080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412407071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4a5653e0582fe4c82be4dc00693f68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentScore: 0
+  maxScore: 50
 --- !u!1 &1435988604
 GameObject:
   m_ObjectHideFlags: 0
@@ -2639,10 +2638,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy1
       objectReference: {fileID: 0}
-    - target: {fileID: 337671967302554844, guid: 8b358dadfc282c94ea975d9c1a6d7c80, type: 3}
-      propertyPath: m_Layer
-      value: 9
+    - target: {fileID: 1913967195723471635, guid: 8b358dadfc282c94ea975d9c1a6d7c80, type: 3}
+      propertyPath: enemyPoint
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1913967195723471635, guid: 8b358dadfc282c94ea975d9c1a6d7c80, type: 3}
+      propertyPath: playerScore
+      value: 
+      objectReference: {fileID: 1412407080}
     - target: {fileID: 2077318207537822667, guid: 8b358dadfc282c94ea975d9c1a6d7c80, type: 3}
       propertyPath: playerTransform
       value: 
@@ -2690,10 +2693,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 337671967302554844, guid: 8b358dadfc282c94ea975d9c1a6d7c80, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 316884218}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b358dadfc282c94ea975d9c1a6d7c80, type: 3}
 --- !u!1 &1898049684
 GameObject:

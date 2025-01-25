@@ -6,6 +6,8 @@ public class EnemyHealth : MonoBehaviour
 {
     public int currentHealth;
     public int maxHealth;
+    public int enemyPoint;
+    public PlayerScore playerScore;
 
     private void Start()
     {
@@ -22,6 +24,7 @@ public class EnemyHealth : MonoBehaviour
         else if(currentHealth <= 0)
         {
             Destroy(gameObject);
+            playerScore.addScore(enemyPoint);
         }
     }
 }
