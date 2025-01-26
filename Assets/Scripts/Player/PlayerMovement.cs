@@ -55,10 +55,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void knockBack(Transform enemy, float force, float stunTime)
     {
-        isKnockedBack = true;
-        Vector2 direction = (transform.position - enemy.position).normalized;
-        playerRigidBody.velocity = direction * force;
-        StartCoroutine(knockbackCounter(stunTime));
+        if(gameObject.activeInHierarchy)
+        {
+            isKnockedBack = true;
+            Vector2 direction = (transform.position - enemy.position).normalized;
+            playerRigidBody.velocity = direction * force;
+            StartCoroutine(knockbackCounter(stunTime));
+        }
     }
 
     IEnumerator knockbackCounter(float stunTime)

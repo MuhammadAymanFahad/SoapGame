@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1820233264, guid: 40fd4217f760c0741a68f68f8c764dd2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0d57ad3697f95da4592e01836f2fa34f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
-  attackRange: 1.2
+  attackRange: 1
   attackCooldown: 1.5
   attackCooldownTimer: 0
   playerDetectRange: 7
@@ -270,8 +270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9306fbb9f43fbee41a2423a90e228e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 3
-  maxHealth: 3
+  currentHealth: 2
+  maxHealth: 2
   enemyPoint: 2
   playerScore: {fileID: 0}
 --- !u!114 &7520568922723179475
@@ -342,7 +342,7 @@ Transform:
   m_GameObject: {fileID: 5895970155461041244}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.85, y: -0.42, z: 0}
+  m_LocalPosition: {x: 0.33, y: -0.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

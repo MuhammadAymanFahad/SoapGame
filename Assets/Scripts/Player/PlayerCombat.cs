@@ -15,11 +15,27 @@ public class PlayerCombat : MonoBehaviour
     public float knockbackTime = .15f;
     public float stunTime = 0.15f;
 
+    public PlayerScore playerScore;
+    public PlayerHealth playerHealth;
+    private int lastCheckedScore;
+
     private void Update()
     {
         if(timer > 0)
         {
             timer -= Time.deltaTime;
+        }
+        scoreCheck();
+    }
+
+    public void scoreCheck()
+    {
+        int currentScore = playerScore.getCurrentScore();
+        if (currentScore >= 10 && currentScore % 10 == 0 && currentScore > lastCheckedScore)
+        {
+            Debug.Log("Current score is = " + currentScore);
+            playerHealth.changeHealth(2);
+            lastCheckedScore = currentScore;
         }
     }
 

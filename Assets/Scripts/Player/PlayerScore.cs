@@ -5,12 +5,17 @@ using UnityEngine;
 public class PlayerScore : MonoBehaviour
 {
     public int currentScore;
-    public int maxScore = 50;
+    public int maxScore = 40;
     private bool isWin = false;
 
     void Start()
     {
         currentScore = 0;
+    }
+
+    public int getCurrentScore()
+    {
+        return this.currentScore;
     }
 
     // Update is called once per frame
