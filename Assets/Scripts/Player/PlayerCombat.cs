@@ -19,6 +19,14 @@ public class PlayerCombat : MonoBehaviour
     public PlayerHealth playerHealth;
     private int lastCheckedScore;
 
+    public AudioClip attackSoundClip;
+    public AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = attackSoundClip;
+    }
     private void Update()
     {
         if(timer > 0)
@@ -44,6 +52,7 @@ public class PlayerCombat : MonoBehaviour
         if(timer <= 0)
         {
             anim.SetBool("isAttacking", true);
+            audioSource.Play();
             timer = cooldown;
         }
         

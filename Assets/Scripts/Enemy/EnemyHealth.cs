@@ -12,6 +12,15 @@ public class EnemyHealth : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
+        if (playerScore == null)
+        {
+            playerScore = FindObjectOfType<PlayerScore>();
+        }
+
+        if (playerScore == null)
+        {
+            Debug.LogError("PlayerScore tidak ditemukan di scene! Pastikan script PlayerScore ada pada suatu GameObject.");
+        }
     }
 
     public void changeHealth(int amount)

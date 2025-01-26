@@ -270,8 +270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9306fbb9f43fbee41a2423a90e228e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 2
-  maxHealth: 2
+  currentHealth: 3
+  maxHealth: 3
   enemyPoint: 2
   playerScore: {fileID: 0}
 --- !u!114 &7520568922723179475

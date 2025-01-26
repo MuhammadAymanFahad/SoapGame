@@ -1,19 +1,24 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class LevelManager : MonoBehaviour
 {
     public GameObject pausePanel;
     public GameObject gameOverPanel;
+    public GameObject victoryPanel;
     public PlayerScore playerScore;
     public PlayerHealth playerHealth;
     private bool isPaused = false;
-    private bool isWin = false;
 
     private void Start()
     {
         gameOverPanel.SetActive(false);
         pausePanel.SetActive(false);
+        victoryPanel.SetActive(false);
     }
 
     void Update()
@@ -35,7 +40,8 @@ public class LevelManager : MonoBehaviour
 
     public void playerWin()
     {
-        isWin = true;
+        victoryPanel.gameObject.SetActive(true);
+        Time.timeScale = 0f;
     }
     public void TogglePause()
     {
@@ -66,6 +72,5 @@ public class LevelManager : MonoBehaviour
     public void GameOver()
     {
         gameOverPanel.SetActive(true);
-
     }
 }
