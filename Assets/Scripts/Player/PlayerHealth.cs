@@ -19,4 +19,9 @@ public class PlayerHealth : MonoBehaviour
 
         }
     }
+
+    public int getCurrentHealth()
+    {
+        return this.currentHealth;
+    }
 }

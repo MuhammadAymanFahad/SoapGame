@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerScore : MonoBehaviour
 {
     public int currentScore;
     public int maxScore = 40;
-    private bool isWin = false;
+    public TMP_Text scoreText;
 
     void Start()
     {
         currentScore = 0;
+        scoreText.text = "Your Score : " + 0;
     }
 
     public int getCurrentScore()
@@ -21,16 +24,16 @@ public class PlayerScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentScore >= 50)
-        {
-            isWin = true;
-
-        }
+        changeScore();
     }
 
     public void addScore(int score)
     {
-        currentScore =+ score ;
+        currentScore += score ;
     }
 
+    public void changeScore()
+    {
+        scoreText.text = "Your Score : " + currentScore.ToString();
+    }
 }

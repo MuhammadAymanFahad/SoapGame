@@ -13,6 +13,7 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
     }
+
     public void changeHealth(int amount)
     {
         currentHealth += amount;
