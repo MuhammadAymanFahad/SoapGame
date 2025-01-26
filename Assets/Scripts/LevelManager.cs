@@ -10,6 +10,11 @@ public class LevelManager : MonoBehaviour
     private bool isPaused = false;
     private bool isWin = false;
 
+    private void Start()
+    {
+        gameOverPanel.SetActive(false);
+        pausePanel.SetActive(false);
+    }
 
     void Update()
     {
@@ -60,7 +65,7 @@ public class LevelManager : MonoBehaviour
 
     public void GameOver()
     {
-        
+        gameOverPanel.SetActive(true);
 
     }
 }
