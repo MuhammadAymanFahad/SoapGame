@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour
         {
             TogglePause();
         }
-        if(playerScore.getCurrentScore() >= 50)
+        if(playerScore.getCurrentScore() >= 25)
         {
             playerWin();
         }
